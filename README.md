@@ -1,2 +1,2 @@
 # PF Module Homework
-  SoftUni's Programing Fundamentals module. Homework and exercises with JavaScript.
+  SoftUni's Programing Fundamentals module. My homework exercises with JavaScript.
