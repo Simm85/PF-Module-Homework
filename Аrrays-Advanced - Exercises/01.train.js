@@ -34,7 +34,7 @@ function train(input) {
             }
         }
     }
-
+    
     // Print final state of all Wagons.
     console.log(availableWagons.join(' '));
 }
