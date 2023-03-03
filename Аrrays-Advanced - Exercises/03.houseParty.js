@@ -36,7 +36,7 @@ function houseParty(strArray) {
         } else {
             // Remove person if he/she is in the list and will not visit the party.
             if (!isAlreadyInTheList) console.log(`${guestName} is not in the list!`);
-            listOfGuests = listOfGuests.filter(name => name !== guestName);
+            listOfGuests.filter(name => name !== guestName);
         }
     }
     // Print all the guests each on seperate line.
