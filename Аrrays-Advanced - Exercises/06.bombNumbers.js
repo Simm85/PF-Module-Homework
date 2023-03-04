@@ -19,7 +19,7 @@ function bombNumbers(array1, array2) {
         }
     }
     numbersArray.length > 0 ? numbersArray.forEach(number => result += number) : result = 0;
-   return console.log(result);
+    return console.log(result);
 }
 //bombNumbers([1, 2, 2, 4, 2, 2, 2, 9], [4, 2]);
 bombNumbers([1, 4, 4, 2, 8, 9, 1], [9, 3]);
