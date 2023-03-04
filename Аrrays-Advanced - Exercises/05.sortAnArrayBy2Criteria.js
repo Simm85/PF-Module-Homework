@@ -10,9 +10,9 @@ function sortAnArrayBy2Criteria(input) {
     let data = Array.from(input);
     data.sort((element1, element2) => {
         if (element1.length - element2.length === 0) {
-            return element1.localeCompare(element2)
+            return element1.localeCompare(element2);
         }
-        return element1.length - element2.length
+        return element1.length - element2.length;
     });
     return console.log(data.join('\n'));
 }
