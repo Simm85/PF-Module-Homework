@@ -20,10 +20,7 @@ function inventory(input) {
     }
 
     allHeros.sort((a, b) => a.level - b.level);
-
-    for (let object of allHeros) {
-        console.log(`Hero: ${object.name}\nlevel => ${object.level}\nitems => ${object.items}`);
-    }
+    allHeros.forEach(object => console.log(`Hero: ${object.name}\nlevel => ${object.level}\nitems => ${object.items}`));
 }
 
 inventory([
@@ -33,6 +30,7 @@ inventory([
 ]);
 
 console.log('===================================================================');
+
 inventory([
     'Batman / 2 / Banana, Gun',
     'Superman / 18 / Sword',
