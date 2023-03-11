@@ -1,7 +1,7 @@
 function classStorage() {
     class Storage {
         constructor(capacity) {
-            this.capacity = Math.abs(capacity);
+            this.capacity = capacity;
             this.totalCost = 0;
             this.storage = [];
         }
@@ -10,12 +10,10 @@ function classStorage() {
             this.totalCost += newProduct.price * newProduct.quantity;
             this.capacity -= newProduct.quantity;
             this.storage.push(newProduct);
-            return;
         }
 
         getProducts() {
-            this.storage = this.storage.map(product => JSON.stringify(product));
-            return this.storage.join('\n');
+            return this.storage.map(product => JSON.stringify(product)).join('\n');
         }
     }
 
