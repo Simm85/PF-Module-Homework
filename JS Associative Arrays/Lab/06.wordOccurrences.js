@@ -3,10 +3,7 @@ function wordOccurrences(data) {
 
     for (let word of data) {
         let counter = 1;
-        if (words.has(word)) {
-            counter = words.get(word);
-            counter++;
-        }
+        if (words.has(word)) counter = words.get(word) + 1;
         words.set(word, counter);
     }
 
