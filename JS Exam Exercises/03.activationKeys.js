@@ -5,33 +5,44 @@ function activationKeys(input) {
 
     for (let array of commandsAndActions) {
         let action = array.shift();
-        if (action === 'Generate') return console.log(`Your activation key is: ${rawKey}`);
 
         switch (action) {
-            case 'Slice':
-                let [start, end] = array;
-                let charsToDelete = rawKey.slice(start, end);
-                rawKey = rawKey.replace(charsToDelete, '');
-                console.log(rawKey);
+            case 'Slice': slice(array);
                 break;
 
-            case 'Contains':
-                let substring = array[0];
-                rawKey.includes(substring)
-                    ? console.log(`${rawKey} contains ${substring}`)
-                    : console.log('Substring not found!');
+            case 'Contains': contains(array);
                 break;
 
-            case 'Flip':
-                let subAction = array.shift();
-                let [startIndex, endIndex] = array;
-                let chars = rawKey.substring(startIndex, endIndex);
-                subAction === 'Upper'
-                    ? rawKey = rawKey.replace(chars, chars.toUpperCase())
-                    : rawKey = rawKey.replace(chars, chars.toLowerCase());
-                console.log(rawKey);
+            case 'Flip': flip(array);
+                break;
+
+            case 'Generate': return console.log(`Your activation key is: ${rawKey}`);
                 break;
         }
+    }
+
+    function slice(array) {
+        let [start, end] = array;
+        let charsToDelete = rawKey.slice(start, end);
+        rawKey = rawKey.replace(charsToDelete, '');
+        console.log(rawKey);
+    }
+
+    function contains(array) {
+        let substring = array[0];
+        rawKey.includes(substring)
+            ? console.log(`${rawKey} contains ${substring}`)
+            : console.log('Substring not found!');
+    }
+
+    function flip(array) {
+        let subAction = array.shift();
+        let [start, end] = array;
+        let chars = rawKey.substring(start, end);
+        subAction === 'Upper'
+            ? rawKey = rawKey.replace(chars, chars.toUpperCase())
+            : rawKey = rawKey.replace(chars, chars.toLowerCase());
+        console.log(rawKey);
     }
 }
 activationKeys(["134softsf5ftuni2020rockz42",
