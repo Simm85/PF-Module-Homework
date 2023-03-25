@@ -40,9 +40,10 @@ function passwordReset(input) {
     }
 
     function replace(password, pattern, symbol) {
-        let regEx = new RegExp(`[${pattern}]`, 'g');
         if (password.includes(pattern)) {
-            password = password.replace(regEx, symbol);
+            while (password.includes(pattern)) {
+                password = password.replace(pattern, symbol);
+            }
             return console.log(givenString = password);
         } else {
             return console.log('Nothing to replace!');

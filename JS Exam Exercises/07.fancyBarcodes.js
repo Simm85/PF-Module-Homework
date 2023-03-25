@@ -1,16 +1,43 @@
 function fancyBarcodes(input) {
-    
+    let pattern = /(@[#]{1,})([A-Z]{1}[A-Za-z0-9]{4,}[A-Z])(@[#]{1,})/gm;
+    let allBarcodes = [];
 
+    for (let i = 1; i < input.length; i++) {
+        let currentBarcode = input[i].match(pattern);
+        if (currentBarcode !== null) currentBarcode = currentBarcode.join('');
+        allBarcodes.push(currentBarcode);
+    }
 
-
-
-
-
-
-
-
+    for (let barcode of allBarcodes) {
+        let group = '';
+        if (barcode !== null) {
+            let hasDigit = false;
+            for (let i = 0; i < barcode.length; i++) {
+                let char = barcode[i];
+                if (char == Number(char)) {
+                    group += char;
+                    hasDigit = true;
+                }
+            }
+            if (!hasDigit) group = '00';
+            console.log(`Product group: ${group}`);
+        } else (console.log('Invalid barcode'));
+    }
 }
-fancyBarcodes();
+fancyBarcodes(["3",
+    "@#FreshFisH@#",
+    "@###Brea0D@###",
+    "@##Che4s6E@##"]);
+console.log('=========================================================================');
+console.log('=========================================================================');
+fancyBarcodes(["6",
+    "@###Val1d1teM@###",
+    "@#ValidIteM@#",
+    "##InvaliDiteM##",
+    "@InvalidIteM@",
+    "@#Invalid_IteM@#",
+    "@#ValiditeM@#"]);
+
 
 
 /**Problem 2 - Fancy Barcodes
