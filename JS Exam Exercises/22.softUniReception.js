@@ -16,7 +16,7 @@ function softUniReception(input) {
 }
 softUniReception(['5', '6', '4', '20']);
 softUniReception(['1', '2', '3', '45']);
-softUniReception(['3', '2', '5', '40'])
+softUniReception(['3', '2', '5', '40']);
 
 
 /**Problem 1 - SoftUni Reception
