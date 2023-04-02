@@ -12,7 +12,7 @@ function shootForWin(input) {
             shotTargets++;
             targets.splice(index, 1);
             targets = targets.map(n => {
-                if (n > currentTarget && n !== -1) {
+                if (n > currentTarget) {
                     return n -= currentTarget;
                 } else if (n <= currentTarget && n !== -1) {
                     return n += currentTarget;
