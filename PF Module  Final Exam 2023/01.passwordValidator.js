@@ -1,4 +1,4 @@
-function solve_1(input) {
+function passwordValidator(input) {
     let initPassword = input.shift();
     for (let line of input) {
         let [command, ...values] = line.split(' ');
@@ -6,9 +6,10 @@ function solve_1(input) {
         switch (command) {
             case 'Replace': {
                 let char = values[0];
-                let value = Number(values[1]);
                 if (initPassword.includes(char)) {
-                    let charValue = initPassword.charCodeAt(char);
+                    let value = Number(values[1]);
+                    let index = initPassword.indexOf(char);
+                    let charValue = initPassword.charCodeAt(index); //Index instead of char. Small fix for 100/100 points
                     let result = charValue + value;
                     let newChar = String.fromCharCode(result);
                     initPassword = initPassword.split(char).join(newChar);
@@ -19,8 +20,8 @@ function solve_1(input) {
 
             case 'Insert': {
                 let index = Number(values[0]);
-                let char = values[1];
                 if (index >= 0 && index < initPassword.length) {
+                    let char = values[1];
                     let left = initPassword.substring(0, index);
                     let right = initPassword.substring(index);
                     initPassword = left + char + right;
@@ -30,15 +31,11 @@ function solve_1(input) {
                 break;
 
             case 'Make': {
-                let command = values[0];
                 let index = Number(values[1]);
                 if (index >= 0 && index < initPassword.length) {
+                    let command = values[0];
                     let letter = initPassword[index];
-                    if (command === 'Upper') {
-                        letter = letter.toUpperCase();
-                    } else {
-                        letter = letter.toLowerCase();
-                    }
+                    command === 'Upper' ? letter = letter.toUpperCase() : letter = letter.toLowerCase();
                     initPassword = initPassword.replace(initPassword[index], letter);
                     console.log(initPassword);
                 }
@@ -59,30 +56,21 @@ function solve_1(input) {
         }
     }
 }
-solve_1(['invalidpassword*',
-'Add 2 p',
-'Replace i -50',
-'Replace * 10',
-'Make Upper 2',
-'Validation',
-'Complete'])
+passwordValidator(['invalidpassword*',
+    'Add 2 p',
+    'Replace i -50',
+    'Replace * 10',
+    'Make Upper 2',
+    'Validation',
+    'Complete'])
 
 
 console.log('==============================================================================');
 
-solve_1(['123456789',
+passwordValidator(['123456789',
     'Insert 3 R',
     'Replace 5 15',
     'Validation',
     'Make Lower 3',
     'Complete'
 ]);
-
-
-
-let greeting = 'Hello World';
-let m = greeting.substring(3, 5)
-console.log(m);
-let c = 1;
- b = ++c;
-console.log(b );

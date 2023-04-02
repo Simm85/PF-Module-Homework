@@ -1,4 +1,4 @@
-function solve_3(input) {
+function degustationParty(input) {
     let guests = {};
     let unlikedMeals = 0;
 
@@ -39,21 +39,22 @@ function solve_3(input) {
         }
     }
 }
-solve_3(["Like-Krisi-shrimps",
+
+degustationParty(["Like-Krisi-shrimps",
     "Like-Krisi-soup",
     "Like-Penelope-dessert",
     "Like-Misho-salad",
-    "Stop"])
+    "Stop"]);
 
 console.log('============================================================================');
 
-solve_3(["Like-Krisi-shrimps",
+degustationParty(["Like-Krisi-shrimps",
     "Dislike-Vili-carp",
     "Dislike-Krisi-salad",
-    "Stop"])
+    "Stop"]);
 
 console.log('============================================================================');
 
-solve_3(["Like-Katy-fish",
+degustationParty(["Like-Katy-fish",
     "Dislike-Katy-fish",
-    "Stop"])
+    "Stop"]);
