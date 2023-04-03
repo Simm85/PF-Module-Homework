@@ -4,7 +4,7 @@ function shoppingList(input) {
     input.splice(input.length - 1, 1, endCommand);
     for (let i = 0; i < input.length; i++) {
         let [command, ...product] = input[i].split(' ');
-        if (command === 'GoShopping!') return console.log(initList.join(', '));
+        if (command === endCommand) return console.log(initList.join(', '));
         switch (command) {
             case 'Unnecessary': {
                 let item = product[0];
