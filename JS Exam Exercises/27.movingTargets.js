@@ -9,9 +9,8 @@ function movingTargets(input) {
                 let index = values[0];
                 let power = values[1];
                 let target = targets[index];
-                if (index >= 0 && index < targets.length) {
-                    target -= power;
-                    targets.splice(index, 1, target);
+                if ((index >= 0 && index < targets.length)) {
+                    targets.splice(index, 1, target -= power);
                     if (target <= 0)
                         targets.splice(index, 1);
                 }
@@ -45,6 +44,7 @@ function movingTargets(input) {
         }
     }
 }
+
 movingTargets(["52 74 23 44 96 110",
     "Shoot 5 10",
     "Shoot 1 80",

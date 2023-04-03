@@ -15,8 +15,7 @@ function passwordValidator(input) {
                     initPassword = initPassword.split(char).join(newChar);
                     console.log(initPassword);
                 }
-            }
-                break;
+            } break;
 
             case 'Insert': {
                 let index = Number(values[0]);
@@ -27,8 +26,7 @@ function passwordValidator(input) {
                     initPassword = left + char + right;
                     console.log(initPassword);
                 }
-            }
-                break;
+            } break;
 
             case 'Make': {
                 let index = Number(values[1]);
@@ -39,7 +37,7 @@ function passwordValidator(input) {
                     initPassword = initPassword.replace(initPassword[index], letter);
                     console.log(initPassword);
                 }
-            }
+            } break;
 
             case 'Validation': {
                 if (initPassword.length < 8) console.log('Password must be at least 8 characters long!');
@@ -51,8 +49,7 @@ function passwordValidator(input) {
                 if (!regEx_3.test(initPassword)) console.log("Password must consist at least one lowercase letter!");
                 let regEx_4 = /[\d]{1,}/gm;
                 if (!regEx_4.test(initPassword)) console.log("Password must consist at least one digit!");
-            }
-                break;
+            } break;
         }
     }
 }
