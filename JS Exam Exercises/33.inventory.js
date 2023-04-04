@@ -11,6 +11,7 @@ function inventory(input) {
             case 'Drop': {
                 if (inventory.indexOf(item) !== -1) inventory.splice(inventory.indexOf(item), 1);
             } break;
+
             case 'Combine Items': {
                 let [oldItem, newItem] = item.split(':');
                 if (inventory.indexOf(oldItem) !== -1)
