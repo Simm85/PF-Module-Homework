@@ -1,56 +1,65 @@
 function ladyBugs(input) {
-    let data = input.slice();
-    let fieldSize = data[0];
-    let ladyBugPosition = data[1].split(' ');
-    let flyZone = [];
-    let commands = [];
-
-    for (let i = 0; i < fieldSize; i++) {
-        flyZone.push(0);
+    const range = Number(input.shift());
+    const ladyBugs = input.shift().split(' ').map(n => Number(n));
+    const field = [];
+    for (let i = 0; i < range; i++) {
+        field.push(0);
     }
 
-    for (let position of ladyBugPosition) {
-        if (position >= 0 && position < flyZone.length) {
-            flyZone.splice(position, 1, 1);
-        } else {
-            continue;
-        }
+    for (let i = 0; i < ladyBugs.length; i++) {
+        if (ladyBugs[i] >= 0 && ladyBugs[i] < field.length)
+            field.splice(ladyBugs[i], 1, 1);
     }
 
-    for (let i = 2; i < data.length; i++) {
-        commands.push(data[i]);
-    }
-
-    commands = commands.map(cmd => cmd.split(' '));
-
-    for (let i = 0; i < commands.length; i++) {
-        let ladyBugIndex = Number(commands[i][0]);
-        let flyDirection = commands[i][1];
-        let flyLength = Number(commands[i][2]);
-        let currentLadyBug = flyZone[ladyBugIndex];
-        let inBounds = ladyBugIndex >= 0 && ladyBugIndex < flyZone.length;
-        let isSlotFree = flyZone[ladyBugIndex + 1] === 0;
-
-        if (inBounds && currentLadyBug === 1) {
-            flyZone.splice(ladyBugIndex, 1, 0);
-            if (isSlotFree) {
-                if (flyDirection === 'left') flyLength = -flyLength;
-                flyZone[ladyBugIndex + flyLength] = 1;
-            } else {
-                for (let j = ladyBugIndex + 2; j < flyZone.length; j++) {
-                    isSlotFree = flyZone[j] === 0;
-                    if (isSlotFree) {
-                        if (flyDirection === 'left') flyLength = -flyLength;
-                        flyZone[ladyBugIndex + flyLength] = 1;
-                        break;
+    for (const line of input) {
+        let [ladyIndex, direction, flyLength] = line.split(' ');
+        ladyIndex = Number(ladyIndex);
+        flyLength = Number(flyLength);
+        const isValid = (ladyIndex >= 0 && ladyIndex < field.length) && field[ladyIndex] > 0;
+        if (isValid) {
+            field.splice(ladyIndex, 1, 0);
+            switch (direction) {
+                case 'right': {
+                    while (ladyIndex < field.length) {
+                        if (field[ladyIndex] === 0) {
+                            field.splice(ladyIndex, 1, 1);
+                            break;
+                        }
+                        ladyIndex += flyLength;
                     }
-                }
+                } break;
+
+                case 'left': {
+                    flyLength = -flyLength;
+                    while (ladyIndex < field.length) {
+                        if (field[ladyIndex] === 0) {
+                            field.splice(ladyIndex, 1, 1);
+                            break;
+                        }
+                        ladyIndex += flyLength;
+                    }
+                } break;
             }
         }
     }
-
-    return console.log(flyZone.join(' '));
+    console.log(field.join(' '));
 }
-ladyBugs([3, '0 1', '0 right 1', '2 right 1']);   // 0 1 0
-ladyBugs([5, '3', '3 left 2', '1 left -2']);     //  0 0 0 1 0
-ladyBugs([3, '0 1 2', '0 right 1', '1 right 1', '2 right 1']);    // 0 0 0
+ladyBugs([3, '0 1',
+    '0 right 1',
+    '2 right 1'
+]);
+
+console.log('=====================================================================================');
+
+ladyBugs([3, '0 1 2',
+    '0 right 1',
+    '1 right 1',
+    '2 right 1'
+]);
+
+console.log('=====================================================================================');
+
+ladyBugs([5, '3',
+    '3 left 2',
+    '1 left -2'
+]);
