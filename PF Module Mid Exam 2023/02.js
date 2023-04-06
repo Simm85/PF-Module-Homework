@@ -1,5 +1,5 @@
 function solve(input) {
-    let numbers = input.shift().split(' ').map(n => Number(n));
+    let numbers = input.shift().split(' ').map(element => Number(element));
 
     for (let line of input) {
         let command = '';
@@ -28,7 +28,7 @@ function solve(input) {
         let values = line
             .split(' ')
             .filter(element => element != '')
-            .map(n => Number(n));
+            .map(element => Number(element));
 
         switch (command) {
             case 'add to start': {
