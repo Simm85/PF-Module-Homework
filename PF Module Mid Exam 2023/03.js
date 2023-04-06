@@ -2,13 +2,7 @@ function solve(input) {
     let products = input.shift().split('|');
     for (let line of input) {
         let [command, ...item] = line.split('%');
-        let count = 0;
-        if (command === 'Shop!') {
-            for (let i = 0; i < products.length; i++) {
-                count++;
-                console.log(`${count}. ${products[i]}`);
-            }
-        };
+
         switch (command) {
             case 'Important': {
                 if (products.indexOf(item[0]) === -1) {
@@ -20,11 +14,9 @@ function solve(input) {
             } break;
 
             case 'Add': {
-                if (products.indexOf(item[0]) === -1) {
-                    products.push(item[0]);
-                } else {
-                    console.log("The product is already in the list.");
-                }
+                products.indexOf(item[0]) === -1
+                    ? products.push(item[0])
+                    : console.log("The product is already in the list.");
             } break;
 
             case 'Swap': {
@@ -37,25 +29,28 @@ function solve(input) {
                     products.splice(index1, 1, item2);
                     products.splice(index2, 1, item1);
                 } else {
-                    if (products.indexOf(item1) === -1) {
-                        console.log(`Product ${item1} missing!`);
-                    } else {
-                        console.log(`Product ${item2} missing!`);
-                    }
+                    products.indexOf(item1) === -1
+                        ? console.log(`Product ${item1} missing!`)
+                        : console.log(`Product ${item2} missing!`);
                 }
-
             } break;
 
             case 'Remove': {
-                if (products.indexOf(item[0]) !== -1) {
-                    products.splice(products.indexOf(item[0]), 1);
-                } else {
-                    console.log(`Product ${item[0]} isn't in the list.`);
-                }
+                products.indexOf(item[0]) !== -1
+                    ? products.splice(products.indexOf(item[0]), 1)
+                    : console.log(`Product ${item[0]} isn't in the list.`);
             } break;
 
             case 'Reversed': {
                 products.reverse();
+            } break;
+
+            case 'Shop!': {
+                let count = 0;
+                for (let i = 0; i < products.length; i++) {
+                    count++;
+                    console.log(`${count}. ${products[i]}`);
+                }
             } break;
         }
     }
