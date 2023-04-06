@@ -8,14 +8,15 @@ function solve(input) {
 
     if (peopleCount > 10) roomPrice -= roomPrice * 0.25;
     foodExpenses *= peopleCount * tripDays;
-    let accomadation = peopleCount * roomPrice * tripDays;
-    let totalPrice = foodExpenses + accomadation;
-    let expenses = totalPrice;
+    let accommodation = peopleCount * roomPrice * tripDays;
+    let expenses = foodExpenses + accommodation;
     let money = 0;
     let dayCount = 0;
+    
     for (let i = 0; i < tripDays; i++) {
+        let dailyKm = Number(input[i]);
         dayCount++;
-        expenses += Number(input[i]) * fuelPrice;
+        expenses += dailyKm * fuelPrice;
         if (dayCount % 3 === 0) expenses += expenses * 0.4;
         if (dayCount % 5 === 0) expenses += expenses * 0.4;
         if (dayCount % 7 === 0) expenses -= expenses / peopleCount;
