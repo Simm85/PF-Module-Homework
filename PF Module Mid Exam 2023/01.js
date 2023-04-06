@@ -12,11 +12,11 @@ function solve(input) {
     let expenses = foodExpenses + accommodation;
     let money = 0;
     let dayCount = 0;
-    
+
     for (let i = 0; i < tripDays; i++) {
         let dailyKm = Number(input[i]);
-        dayCount++;
         expenses += dailyKm * fuelPrice;
+        dayCount++;
         if (dayCount % 3 === 0) expenses += expenses * 0.4;
         if (dayCount % 5 === 0) expenses += expenses * 0.4;
         if (dayCount % 7 === 0) expenses -= expenses / peopleCount;
