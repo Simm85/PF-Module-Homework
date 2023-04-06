@@ -25,11 +25,10 @@ function solve(input) {
             command = line;
         }
 
-        let values = line.split(' ');
-        values.forEach(element => {
-            if (element === '') values.splice(values.indexOf(element), 1);
-        });
-        values = values.map(n => Number(n));
+        let values = line
+            .split(' ')
+            .filter(element => element != '')
+            .map(n => Number(n));
 
         switch (command) {
             case 'add to start': {
