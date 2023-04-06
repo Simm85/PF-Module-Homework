@@ -29,49 +29,42 @@ function solve(input) {
         values.forEach(element => {
             if (element === '') values.splice(values.indexOf(element), 1);
         });
-       values = values.map(n => Number(n));
+        values = values.map(n => Number(n));
 
         switch (command) {
             case 'add to start': {
                 values.reverse();
                 values.forEach(element => numbers.unshift(element));
-            }
-                break;
+            } break;
 
             case 'remove greater than': {
                 numbers = numbers.filter(n => values[0] > n);
-            }
-                break;
+            } break;
 
             case 'replace': {
                 let n = values[0];
                 let replacement = values[1];
                 if (numbers.indexOf(n) > -1) numbers.splice(numbers.indexOf(n), 1, replacement);
-            }
-                break;
+            } break;
 
             case 'remove at index': {
                 let index = values[0];
                 if (index >= 0 && index < numbers.length) numbers.splice(index, 1);
-            }
-                break;
+            } break;
 
             case 'find even': {
                 let ints = numbers.filter(n => n % 2 === 0);
                 console.log(ints.join(' '));
-            }
-                break;
+            } break;
 
             case 'find odd': {
                 let ints = numbers.filter(n => n % 2 !== 0);
                 console.log(ints.join(' '));
-            }
-                break;
+            } break;
 
             case 'END': {
                 console.log(numbers.join(', '));
-            }
-                break;
+            } break;
         }
     }
 }
