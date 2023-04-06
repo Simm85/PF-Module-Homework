@@ -1,34 +1,12 @@
 function solve(input) {
     let numbers = input.shift().split(' ').map(element => Number(element));
+    let numPattern = /[\d]+/gm;
+    let charPattern = /[^\d\s]+/gm;
 
     for (let line of input) {
-        let command = '';
-        if (line.includes('add to start')) {
-            command = 'add to start';
-            line = line.replace(command, "");
-        } else if (line.includes('find even')) {
-            command = 'find even';
-            line = line.replace(command, "");
-        } else if (line.includes('find odd')) {
-            command = 'find odd';
-            line = line.replace(command, "");
-        } else if (line.includes('remove greater than')) {
-            command = 'remove greater than';
-            line = line.replace(command, "");
-        } else if (line.includes('remove at index')) {
-            command = 'remove at index';
-            line = line.replace(command, "");
-        } else if (line.includes('replace')) {
-            command = 'replace';
-            line = line.replace(command, "");
-        } else {
-            command = line;
-        }
-
-        let values = line
-            .split(' ')
-            .filter(element => element != '')
-            .map(element => Number(element));
+        let command = line.match(charPattern).join(' ');
+        let values = line.match(numPattern);
+        if (values !== null) values.join(' ').split(' ').map(element => Number(element));
 
         switch (command) {
             case 'add to start': {
