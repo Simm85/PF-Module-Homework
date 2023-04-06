@@ -25,13 +25,11 @@ function solve(input) {
             command = line;
         }
 
-        values = line.split(' ');
-
+        let values = line.split(' ');
         values.forEach(element => {
             if (element === '') values.splice(values.indexOf(element), 1);
         });
-
-        values = values.map(n => Number(n));
+       values = values.map(n => Number(n));
 
         switch (command) {
             case 'add to start': {
@@ -48,41 +46,28 @@ function solve(input) {
             case 'replace': {
                 let n = values[0];
                 let replacement = values[1];
-                for (let number of numbers) {
-                    if (n === number) {
-                        numbers.splice(numbers.indexOf(number), 1, replacement);
-                        break;
-                    }
-                }
+                if (numbers.indexOf(n) > -1) numbers.splice(numbers.indexOf(n), 1, replacement);
             }
                 break;
 
             case 'remove at index': {
                 let index = values[0];
-                if (index >= 0 && index < numbers.length)
-                    numbers.splice(index, 1);
+                if (index >= 0 && index < numbers.length) numbers.splice(index, 1);
             }
-
                 break;
 
             case 'find even': {
-                let ints = [];
-                for (let number of numbers) {
-                    if (number % 2 === 0) ints.push(number);
-                }
+                let ints = numbers.filter(n => n % 2 === 0);
                 console.log(ints.join(' '));
             }
                 break;
 
             case 'find odd': {
-                let ints = [];
-                for (let number of numbers) {
-                    if (number % 2 !== 0) ints.push(number);
-                }
+                let ints = numbers.filter(n => n % 2 !== 0);
                 console.log(ints.join(' '));
             }
-
                 break;
+
             case 'END': {
                 console.log(numbers.join(', '));
             }
@@ -90,6 +75,15 @@ function solve(input) {
         }
     }
 }
+
+solve(["1 2 3 10 10 6 4 10",
+    "add to start 1 2 3",
+    "remove greater than 5",
+    "find even",
+    "END"])
+
+console.log('=============================================================');
+
 solve(["1 2 3 10 10 6 4 10",
     "replace 10 1",
     "remove at index 0",
