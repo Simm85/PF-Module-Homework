@@ -7,7 +7,10 @@ function solve(input) {
         let command = line.match(charPattern).join(' ');
         let values = line.match(numPattern);
         if (values !== null) values = values.map(element => Number(element));
+        generateNumbers(command, values);
+    }
 
+    function generateNumbers(command, values) {
         switch (command) {
             case 'add to start': {
                 values.reverse();
