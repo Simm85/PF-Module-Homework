@@ -6,7 +6,7 @@ function solve(input) {
     for (let line of input) {
         let command = line.match(charPattern).join(' ');
         let values = line.match(numPattern);
-        if (values !== null) values = values.join(' ').split(' ').map(element => Number(element));
+        if (values !== null) values = values.map(element => Number(element));
 
         switch (command) {
             case 'add to start': {
@@ -50,7 +50,8 @@ solve(["1 2 3 10 10 6 4 10",
     "add to start 1 2 3",
     "remove greater than 5",
     "find even",
-    "END"]);
+    "END"
+]);
 
 console.log('=============================================================');
 
