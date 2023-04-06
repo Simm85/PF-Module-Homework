@@ -37,13 +37,13 @@ function solve(input) {
             } break;
 
             case 'remove greater than': {
-                numbers = numbers.filter(n => values[0] > n);
+                numbers = numbers.filter(number => values[0] > number);
             } break;
 
             case 'replace': {
-                let n = values[0];
+                let number = values[0];
                 let replacement = values[1];
-                if (numbers.indexOf(n) > -1) numbers.splice(numbers.indexOf(n), 1, replacement);
+                if (numbers.indexOf(number) > -1) numbers.splice(numbers.indexOf(number), 1, replacement);
             } break;
 
             case 'remove at index': {
@@ -52,12 +52,12 @@ function solve(input) {
             } break;
 
             case 'find even': {
-                let ints = numbers.filter(n => n % 2 === 0);
+                let ints = numbers.filter(number => number % 2 === 0);
                 console.log(ints.join(' '));
             } break;
 
             case 'find odd': {
-                let ints = numbers.filter(n => n % 2 !== 0);
+                let ints = numbers.filter(number => number % 2 !== 0);
                 console.log(ints.join(' '));
             } break;
 
